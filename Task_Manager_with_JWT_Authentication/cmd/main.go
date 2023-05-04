@@ -11,7 +11,6 @@ import (
 )
 
 func main() {
-
 	dataBase, err := db.OpenDB()
 	if err != nil {
 		log.Fatal("Failed to open database: ", err)
