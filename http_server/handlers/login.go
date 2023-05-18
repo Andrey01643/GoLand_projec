@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"net/http"
 	"strconv"
 	"time"
@@ -24,7 +23,6 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	login := r.PostFormValue("login")
 	password := r.PostFormValue("password")
 
-	fmt.Println(login, password)
 	// Проверяем, что логин и пароль не являются пустыми строками
 	if login == "" || password == "" {
 		http.Error(w, "Login and password can't be empty", http.StatusBadRequest)

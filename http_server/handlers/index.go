@@ -19,19 +19,19 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	defer db.Close()
 
-	// Проверяем наличие cookie с идентификатором пользователя
-	cookie, err := r.Cookie("user_id")
+	user, cookie, err := checkUserCookie(w, r)
 	if err != nil {
-		// Если cookie отсутствует, редиректим на страницу авторизации
-		http.Redirect(w, r, "/", http.StatusSeeOther)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	// Выполняем запрос на выборку пользователя по идентификатору
-	var user models.User
-	err = db.QueryRow("SELECT * FROM auth WHERE id=$1", cookie.Value).Scan(&user.ID, &user.Login, &user.Password, &user.IsAuthorized, &user.LoginTime, &user.LogoutTime)
-	if err != nil {
-		// Если пользователь не найден в БД, редиректим на страницу авторизации
-		http.Redirect(w, r, "/", http.StatusSeeOther)
+
+	if user == nil {
+		http.Error(w, "User not found", http.StatusNotFound)
+		return
+	}
+
+	if cookie == nil {
+		http.Error(w, "User cookie not found", http.StatusNotFound)
 		return
 	}
 
