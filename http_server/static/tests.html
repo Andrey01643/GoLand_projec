@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Тест</title>
+</head>
+<body>
+<h1>Тест: {{ .Variant.Name }}</h1>
+
+<form method="POST" action="/test/{{ .Variant.ID }}/{{ .Task.ID }}/submit">
+    <h2>Задание {{ .Task.ID }}:</h2>
+    <p>{{ .Task.Task }}</p>
+    <ul>
+        <li><input type="radio" id="answer1" name="answer" value="{{ .Task.Answer1 }}"> <label for="answer1">{{ .Task.Answer1 }}</label></li>
+        <li><input type="radio" id="answer2" name="answer" value="{{ .Task.Answer2 }}"> <label for="answer2">{{ .Task.Answer2 }}</label></li>
+        <li><input type="radio" id="answer3" name="answer" value="{{ .Task.Answer3 }}"> <label for="answer3">{{ .Task.Answer3 }}</label></li>
+        <li><input type="radio" id="answer4" name="answer" value="{{ .Task.Answer4 }}"> <label for="answer4">{{ .Task.Answer4 }}</label></li>
+    </ul>
+    <input type="submit" value="Ответить">
+</form>
+
+</body>
+</html>

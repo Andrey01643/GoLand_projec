@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Выбор варианта теста</title>
+</head>
+<body>
+<h1>Выберите вариант теста:</h1>
+<ul>
+    {{ range .Variants }}
+    <li><a href="/test/{{ .ID }}">{{ .Name }}</a></li>
+    {{ end }}
+</ul>
+</body>
+</html>
