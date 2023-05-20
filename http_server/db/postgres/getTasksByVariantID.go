@@ -2,6 +2,7 @@ package postgres
 
 import (
 	"database/sql"
+
 	"httpServer/models"
 )
 
@@ -24,6 +25,7 @@ func GetTasksByVariantID(db *sql.DB, variantID int, t models.Task) (models.Task,
 		}
 		tasks = append(tasks, t)
 	}
+
 	err = rows.Err()
 	if err != nil {
 		return t, err

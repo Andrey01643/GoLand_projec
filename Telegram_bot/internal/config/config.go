@@ -21,7 +21,7 @@ type Config struct {
 type StorageConfig struct {
 	Host     string `json:"host"`
 	Port     string `json:"port"`
-	Database string `json:"database"`
+	Database string `json:"db"`
 	Username string `json:"username"`
 	Password string `json:"password"`
 }
@@ -34,7 +34,7 @@ func GetConfig() *Config {
 		logger := logging.GetLogger()
 		logger.Info("read application configuration")
 		instance = &Config{}
-		if err := cleanenv.ReadConfig("config.yml", instance); err != nil {
+		if err := cleanenv.ReadConfig("config.yaml", instance); err != nil {
 			help, _ := cleanenv.GetDescription(instance, nil)
 			logger.Info(help)
 			logger.Fatal(err)
