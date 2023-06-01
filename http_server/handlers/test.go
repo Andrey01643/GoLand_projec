@@ -151,7 +151,7 @@ func NextTestHandler(w http.ResponseWriter, r *http.Request) {
 
 	if len(t.Task) == 0 {
 		// Если отсутствуют задания для выбранного варианта, перенаправляем на другую страницу
-		http.Redirect(w, r, fmt.Sprintf("/result?variantID=%d", variantID), http.StatusSeeOther) //////////////////////////////////
+		http.Redirect(w, r, fmt.Sprintf("/result?variantID=%d", variantID), http.StatusSeeOther)
 		return
 	}
 	// Отображение страницы с тестом и передача информации о варианте и заданиях в шаблон

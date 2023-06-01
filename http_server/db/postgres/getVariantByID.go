@@ -6,7 +6,6 @@ import (
 )
 
 // Получение информации о варианте из БД
-
 func GetVariantByID(db *sql.DB, id int) (models.Variant, error) {
 
 	var v models.Variant
