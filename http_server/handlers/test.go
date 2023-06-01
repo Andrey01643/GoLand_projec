@@ -57,7 +57,7 @@ func TestHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Отображение страницы с тестом и передача информации о варианте и заданиях в шаблон
-	tpl, err := template.ParseFiles("static/tests.html")
+	tpl, err := template.ParseFiles("web/tests.html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -155,7 +155,7 @@ func NextTestHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	// Отображение страницы с тестом и передача информации о варианте и заданиях в шаблон
-	tpl, err := template.ParseFiles("static/tests.html")
+	tpl, err := template.ParseFiles("web/tests.html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -215,7 +215,7 @@ func ResultTestsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Отображение страницы с результатами теста и передача списка результатов в шаблон
-	tpl, err := template.ParseFiles("static/result.html")
+	tpl, err := template.ParseFiles("web/result.html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return

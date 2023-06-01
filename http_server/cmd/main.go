@@ -20,11 +20,11 @@ func main() {
 	r.HandleFunc("/result", handlers.ResultTestsHandler).Methods("GET")
 	r.HandleFunc("/logout", handlers.LogoutHandler).Methods("POST")
 
-	fs := http.FileServer(http.Dir("static"))
-	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", fs))
+	fs := http.FileServer(http.Dir("web"))
+	r.PathPrefix("/web/").Handler(http.StripPrefix("/web/", fs))
 	// Обработчик для главной страницы
 	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "static/index.html")
+		http.ServeFile(w, r, "web/index.html")
 	})
 	// Запускаем сервер на порту 8080
 	log.Fatal(http.ListenAndServe(":8080", r))

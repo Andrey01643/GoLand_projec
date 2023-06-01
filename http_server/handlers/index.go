@@ -55,7 +55,7 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Отрисовка HTML шаблона
-	t, err := template.ParseFiles("static/variantTests.html")
+	t, err := template.ParseFiles("web/variantTests.html")
 	if err != nil {
 		log.Fatal(err)
 	}
